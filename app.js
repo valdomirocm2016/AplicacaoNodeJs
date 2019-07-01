@@ -2,6 +2,11 @@ const express = require('express');
 const PORT = 3000;
 const app = express();
 const db = require('./config/database');
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+
+
 
 db.authenticate()
 .then(() => console.log('Database connected...'))
@@ -16,6 +21,7 @@ const clientes = require('./routes/clientes');
 
 app.use('/',index);
 app.use('/clientes', clientes);
+
 
 app.get("/", (req,res)=> res.json({status: "Nodejs backend"}));
 

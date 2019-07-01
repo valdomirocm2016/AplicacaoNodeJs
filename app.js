@@ -3,6 +3,14 @@ const PORT = 3000;
 const app = express();
 const db = require('./config/database');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
+app.use(cors({
+    origin: ['http://localhost:3000'],
+    methods:["GET", "PUT","POST","DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+
+}));
 
 app.use(bodyParser.json());
 
